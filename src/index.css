@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap');
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.nav-link {
+  @apply relative;
+}
+
+.nav-link::after {
+  content: '';
+  @apply absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300;
+}
+
+.nav-link:hover::after {
+  @apply w-full;
+}
+
+.nav-link.active::after {
+  @apply w-full;
+}
+
+.service-card {
+  @apply transition-all duration-300 hover:transform hover:scale-105;
+}
+
+.cta-button {
+  animation: pulse 2s infinite;
+}
+
+.bg-gradient {
+  background: linear-gradient(135deg, #4338ca 0%, #3730a3 100%);
+}
+
+.font-serif {
+  font-family: 'Playfair Display', serif;
+}
+
+.prose {
+  @apply text-gray-700;
+}
+
+.prose h3 {
+  @apply text-indigo-900;
+}
+
+.prose p {
+  @apply leading-relaxed;
+}
