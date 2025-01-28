@@ -10,6 +10,9 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: './index.html'
+      },
+      output: {
+        manualChunks: undefined
       }
     }
   },
@@ -17,6 +20,13 @@ export default defineConfig({
     include: ['@stripe/stripe-js']
   },
   server: {
-    port: 3000
+    port: 3000,
+    proxy: {
+      '/api': {
+        target: 'http://localhost:8888/.netlify/functions',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, '')
+      }
+    }
   }
 })
